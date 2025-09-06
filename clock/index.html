@@ -6,31 +6,39 @@
   <title>Reloj</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    html, body {
       margin: 0;
+      height: 100%;
+    }
+    body {
       font-family: 'Quicksand', sans-serif;
       background: transparent;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       transition: color 0.3s ease, background 0.3s ease;
-      color: #000000; /* modo claro por defecto */
+      color: #000000; /* por defecto claro */
     }
     body.dark {
-      color: #ffffff; /* modo oscuro */
+      color: #ffffff;
     }
     #clock {
-      font-size: clamp(4rem, 14vw, 10rem);
+      font-size: 15vw; /* escala con el ancho de la ventana */
       line-height: 1;
       font-weight: 700;
       letter-spacing: 0.02em;
-      margin-bottom: 20px;
+      margin-bottom: 5vh;
+      text-align: center;
+      word-wrap: break-word;
     }
     .switch {
-      width: 40px;
-      height: 40px;
+      width: 8vw;
+      height: 8vw;
+      max-width: 70px;
+      max-height: 70px;
+      min-width: 40px;
+      min-height: 40px;
       border-radius: 50%;
       border: none;
       background: #ccc;
@@ -58,6 +66,14 @@
     setInterval(update, 1000);
 
     const toggle = document.getElementById('toggleMode');
+
+    // Detectar modo del sistema
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDark) {
+      document.body.classList.add('dark');
+    }
+
+    // Cambiar manualmente
     toggle.addEventListener('click', () => {
       document.body.classList.toggle('dark');
     });
