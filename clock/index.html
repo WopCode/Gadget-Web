@@ -12,47 +12,34 @@
     }
     body {
       font-family: 'Quicksand', sans-serif;
-      background: transparent;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding-left: 2%;
+      padding-right: 2%;
       transition: color 0.3s ease, background 0.3s ease;
-      color: #000000; /* por defecto claro */
+      color: #000000; /* texto modo claro */
+      background: #ffffff; /* fondo modo claro */
     }
-    body.dark {
-      color: #ffffff;
+    @media (prefers-color-scheme: dark) {
+      body {
+        color: #ffffff; /* texto modo oscuro */
+        background: #000000; /* fondo modo oscuro */
+      }
     }
     #clock {
       font-size: 15vw; /* escala con el ancho de la ventana */
       line-height: 1;
       font-weight: 700;
       letter-spacing: 0.02em;
-      margin-bottom: 5vh;
       text-align: center;
       word-wrap: break-word;
-    }
-    .switch {
-      width: 8vw;
-      height: 8vw;
-      max-width: 70px;
-      max-height: 70px;
-      min-width: 40px;
-      min-height: 40px;
-      border-radius: 50%;
-      border: none;
-      background: #ccc;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    body.dark .switch {
-      background: #555;
+      width: 100%;
     }
   </style>
 </head>
 <body>
   <div id="clock">00:00</div>
-  <button class="switch" id="toggleMode"></button>
 
   <script>
     function pad(n) { return n.toString().padStart(2, '0'); }
@@ -64,19 +51,6 @@
     }
     update();
     setInterval(update, 1000);
-
-    const toggle = document.getElementById('toggleMode');
-
-    // Detectar modo del sistema
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (prefersDark) {
-      document.body.classList.add('dark');
-    }
-
-    // Cambiar manualmente
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-    });
   </script>
 </body>
 </html>
