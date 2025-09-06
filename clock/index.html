@@ -8,32 +8,31 @@
   <style>
     html, body {
       margin: 0;
+      padding: 0;
       height: 100%;
+      width: 100%;
     }
     body {
       font-family: 'Quicksand', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding-left: 2%;
-      padding-right: 2%;
-      transition: color 0.3s ease, background 0.3s ease;
+      transition: color 0.3s ease;
       color: #000000; /* texto modo claro */
-      background: #ffffff; /* fondo modo claro */
+      background: transparent; /* fondo transparente */
     }
     @media (prefers-color-scheme: dark) {
       body {
         color: #ffffff; /* texto modo oscuro */
-        background: #000000; /* fondo modo oscuro */
+        background: transparent; /* fondo transparente */
       }
     }
     #clock {
-      font-size: 15vw; /* escala con el ancho de la ventana */
+      font-size: 35vw; /* escala con el ancho de la ventana, mucho más grande */
       line-height: 1;
       font-weight: 700;
       letter-spacing: 0.02em;
       text-align: center;
-      word-wrap: break-word;
       width: 100%;
     }
   </style>
